@@ -25,11 +25,11 @@ const HomePage = () => {
 
   const modules = [
     { id: 1, name: "Dashboard", link: "/dashboard", icon: "fa-solid fa-chart-line", description: "Main control panel" },
-    { id: 2, name: "Monitoring", link: "/monitoring", icon: "fa-solid fa-tv", description: "Real-time monitoring" },
+    // { id: 2, name: "Monitoring", link: "/monitoring", icon: "fa-solid fa-tv", description: "Real-time monitoring" },
     { id: 3, name: "Digital Twin", link: "/digital-twin", icon: "fa-solid fa-cube", description: "3D Substation Model" },
     { id: 4, name: "Asset Health", link: "/asset-health", icon: "fa-solid fa-heart-pulse", description: "Health tracking" },
     { id: 5, name: "AI Analytics", link: "/ai-analytics", icon: "fa-solid fa-robot", description: "Predictive analytics" },
-    { id: 6, name: "Fault Simulator", link: "/fault-simulator", icon: "fa-solid fa-bolt", description: "Simulation Engine" },
+    // { id: 6, name: "Fault Simulator", link: "/fault-simulator", icon: "fa-solid fa-bolt", description: "Simulation Engine" },
     { id: 7, name: "Reports", link: "/reports", icon: "fa-solid fa-chart-column", description: "Reports" },
     { id: 8, name: "Grid Map", link: "/grid-map", icon: "fa-solid fa-map", description: "Map Viewer" },
   ];
@@ -91,38 +91,6 @@ const HomePage = () => {
         }
       `}</style>
 
-      {/* ============================
-            LAYER 1 — TOP BLUE BAR
-      ============================== */}
-      <div className="gov-topbar">
-        <div className="content">
-          <div className="flex items-center gap-4">
-            <i className="fa fa-home cursor-pointer"></i>
-
-            {/* Font Size buttons */}
-            <div className="flex gap-1">
-              <button onClick={() => setFontSize(14)} className="px-2 bg-white text-black">A</button>
-              <button onClick={() => setFontSize(16)} className="px-2 bg-white text-black font-bold">A+</button>
-              <button onClick={() => setFontSize(18)} className="px-2 bg-white text-black">A-</button>
-            </div>
-
-            {/* Social icons */}
-            <i className="fab fa-facebook"></i>
-            <i className="fab fa-twitter"></i>
-            <i className="fab fa-instagram"></i>
-          </div>
-
-          {/* Search */}
-          <div className="flex items-center gap-2">
-            <input
-              type="text"
-              placeholder="Search this website..."
-              className="px-2 py-1 rounded text-black"
-            />
-            <Search color="white" size={15} />
-          </div>
-        </div>
-      </div>
 
       {/* ============================
             LAYER 2 — MID LOGO BAR
@@ -227,28 +195,33 @@ const HomePage = () => {
       {/* ============================
             MODULES GRID
       ============================== */}
-      <section id="modules" className="py-12 bg-gray-100">
-        <div className="container mx-auto px-4">
+ 
+<section id="modules" className="py-12 bg-gray-100">
+  <div className="container mx-auto px-4">
 
-          <h2 className="text-3xl text-center font-bold mb-8">System Modules</h2>
+    <h2 className="text-3xl text-center font-bold mb-8">System Modules</h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {modules.map((m) => (
-              <button
-                onClick={() => navigate(m.link)}
-                key={m.id}
-                className="p-5 bg-white rounded-xl border text-center hover:shadow-xl transition"
-              >
-                <div className="w-12 h-12 mx-auto mb-3 bg-blue-100 text-blue-700 rounded-xl grid place-items-center">
-                  <i className={`${m.icon} text-xl`}></i>
-                </div>
-                <h3 className="font-bold text-gray-800">{m.name}</h3>
-                <p className="text-gray-500 text-sm">{m.description}</p>
-              </button>
-            ))}
+    {/* FIXED GRID: 3×2 layout */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center">
+      {modules.map((m) => (
+        <button
+          onClick={() => navigate(m.link)}
+          key={m.id}
+          className="p-6 w-full bg-white rounded-xl border text-center hover:shadow-xl transition"
+        >
+          <div className="w-14 h-14 mx-auto mb-3 bg-blue-100 text-blue-700 rounded-xl grid place-items-center">
+            <i className={`${m.icon} text-2xl`}></i>
           </div>
-        </div>
-      </section>
+
+          <h3 className="font-bold text-gray-800 text-lg">{m.name}</h3>
+          <p className="text-gray-500 text-sm">{m.description}</p>
+        </button>
+      ))}
+    </div>
+
+  </div>
+</section>
+
 
       {/* ============================
             FOOTER
